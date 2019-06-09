@@ -6,7 +6,6 @@ docutils==0.14
 gunicorn==19.9.0
 jmespath==0.9.4
 Pillow==6.0.0
-pkg-resources==0.0.0
 psycopg2==2.8.2
 python-dateutil==2.8.0
 pytz==2019.1
