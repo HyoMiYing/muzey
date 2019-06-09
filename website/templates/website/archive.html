@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'collection/archive.css' %}">
+<div class="vsebina">
+{% if VseKategorije %}
+<ul class="list">
+    {% for Kategorija in VseKategorije %}
+    <li><a href="/arhiv/{{ Kategorija.ImeKategorije }}">{{ Kategorija.ImeKategorije }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Ni še kategorij</p>
+{% endif %}
+<br>
+<a class="home" href="/">Domov</a>
+<img src="{{ Stvar.SlikaStvari.url }}" alt="">
+</div>

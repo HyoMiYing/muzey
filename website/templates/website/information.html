@@ -1,0 +1,27 @@
+<html>
+    <title>Informacije</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'collection/information.css' %}">
+    <div class="vsebina">
+        <h2>Odpiralni Čas</h2>
+        <table>
+            <tr>
+                <th>teden</th>
+                <th>vikend</th>
+            </tr>
+            <tr>
+                <td>{{ AktualneInformacije.teden }}</td>
+                <td>{{ AktualneInformacije.vikend }}</td>
+            </tr>
+        </table>
+        <br>
+        <h2>Lokacija</h2>
+        <p>{{ AktualneInformacije.lokacija }}</p>
+        <br>
+        <h2>Kontakt</h2>
+        <p>{{ AktualneInformacije.email }}</p>
+        <br>
+        <br>
+        <a href="http://localhost:8000">Domov</a>
+    </div> 
+</html>

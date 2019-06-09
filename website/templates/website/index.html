@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>{{ variable.naslov }}</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'collection/index.css' %}">
+    </head>
+    <body>
+        <h1>{{ variable.naslov }}</h1>
+        <div class="menu">
+        <a href="http://localhost:8000/zgodba">Zgodba</a>
+        <a href="http://localhost:8000/informacije">Informacije</a>
+        <a href="http://localhost:8000/arhiv">Arhiv</a>
+        </div>
+    </body>
+</html>

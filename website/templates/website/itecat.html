@@ -1,0 +1,17 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'collection/itecat.css' %}">
+<div class="vsebina">
+{% if VseStvariVKategoriji %}
+<ul>
+    {% for Stvar in VseStvariVKategoriji %}
+        <li><a href="{{ Stvar.id }}">{{ Stvar.ImeStvari }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Ni stvari v tej kategoriji</p>
+{% endif %}
+<br>
+<nav>
+    <a href="/arhiv/">Začetek Arhiva</a>
+</nav>
+</div>
