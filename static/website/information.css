@@ -1,0 +1,40 @@
+* {
+    margin: none;
+    padding: none;
+    color: lightgrey;
+    background-color: black;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+
+body {
+    padding-top: 10%;
+    margin:auto;
+    width: 50%;
+}
+
+
+table {
+    margin: 0px auto;
+}
+
+a {
+    color: white;
+    margin: auto;
+}
+
+.vsebina {
+    text-align: center;
+    padding-top: 10%;
+    margin:auto;
+    width: 50%;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    border-style: none;
+}
