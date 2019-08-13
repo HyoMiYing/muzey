@@ -1,15 +1,56 @@
 <html>
-    <head>
-        <title>{{ variable.naslov }}</title>
-        {% load staticfiles %}
-        <link rel="stylesheet" href="{% static 'index.css' %}">
-    </head>
-    <body>
-        <h1>{{ variable.naslov }}</h1>
-        <div class="menu">
-        <a href="/zgodba">Zgodba</a>
-        <a href="/informacije">Informacije</a>
-        <a href="/arhiv">Arhiv</a>
-        </div>
-    </body>
+  <head>
+      <title>{{ variable.naslov }}</title>
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+      <!-- Latest compiled JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+      <style>
+      #img {
+        position: relative;
+        float: none;
+        width:  100px;
+        height: 100px;
+        background-position: 50% 50%;
+        background-repeat:   no-repeat;
+        background-size:     cover;
+            }
+      </style>
+  </head>
+  <body>
+  <header>
+          <nav class="navbar navbar-default">
+                  <div class="container-fluid">
+                    <div class="navbar-header">
+                      <a class="navbar-brand" href="/">{{ variable.naslov }}</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="/">Domov</a></li>
+                      <li><a href="/zgodba">Zgodba</a></li>
+                      <li><a href="/informacije">Informacije</a></li>
+                    </ul>
+                  </div>
+            </nav>
+  </header>
+            <div class="container">
+            <h1>{{ variable.naslov }}</h1>
+              {% if VseZbirke %}
+                <div class="row">
+                  {% for Zbirka in VseZbirke %}
+                  <div class="col-sm">
+                    <a href="/arhiv/{{ Zbirka.ImeZbirke }}" id="img" class="img-responsive">
+                      <img src="{{ Zbirka.slika_ki_predstavlja_zbirko.url }}" id="img" class="img-responsive" alt="">
+                    </a>
+                  </div>
+                  {% endfor %}
+                </div>
+              {% else %}
+                <p>Ni še zbirk</p>
+              {% endif %}
+            </div>
+  </body>
 </html>

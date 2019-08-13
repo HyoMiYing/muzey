@@ -1,10 +1,170 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'piece.css' %}">
-<div class="vsebina">
-<img src="{{ PravaStvar.SlikaStvari.url }}" alt="">
-<h1>{{ PravaStvar.ImeStvari }}</h1>
-<p>{{ PravaStvar.OpisStvari }}</p>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+        <style>
+            #img {
+              position: relative;
+              float: none;
+              width:  100px;
+              height: 100px;
+              background-position: 50% 50%;
+              background-repeat:   no-repeat;
+              background-size:     cover;
+                  }
+          </style>
+<header>
+        <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <a class="navbar-brand" href="/">{{ variable.naslov }}</a>
+                  </div>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Domov</a></li>
+                    <li><a href="/zgodba">Zgodba</a></li>
+                    <li><a href="/informacije">Informacije</a></li>
+                  </ul>
+                </div>
+              </nav>
+</header>
+<div class="container">
+<h4>Zbirka: {{ PraviPredmet.Zbirka }}
+<img src="{{ PraviPredmet.NaslovnaSlikaPredmeta.url }}" class="img-responsive" alt="">
+{% if SlikeVGaleriji %}
+
+    {% for slika in SlikeVGaleriji %}
+    <img src="{{ slika.Slika.url }}"id="img" class="img-responsive"  alt="">
+    {% endfor %}
+
+{% endif %}
+
+{% if VideiVGaleriji %}
+
+    {% for video in VideiVGaleriji %}
+    <video src="{{ video.Video.url }}" id="img" class="img-responsive"></video>
+    {% endfor %}
+
+{% endif %}
+{% if PraviPredmet.edinstvena_inventarna_stevilka_predmeta %}
+<p><strong>Edinstvena inventarna številka predmeta</strong>: {{ PraviPredmet.edinstvena_inventarna_stevilka_predmeta }}</strong></p>
+{% endif %}
+<h1>{{ PraviPredmet.ImePredmeta }}</h1>
+</h4>
+
+
+{% if PraviPredmet.strokovna_klasifikacija %}
+<p><strong>Strokovna klasifikacija</strong>: {{ PraviPredmet.strokovna_klasifikacija }}</strong></p>
+{% endif %}
+
+<!-- Naslov: Opis predmeta, ki omogoča prepoznavanje -->
+{% if NaslovZaOpisPredmetaKiOmogocaPrepoznavanje %}
+<h3><strong>Opis predmeta, ki omogoča prepoznavanje</strong></h3>
+{% endif %}
+
+{% if PraviPredmet.mere_material_in_tehnike %}
+<p><strong>Mere, material in tehnike</strong>: {{ PraviPredmet.mere_material_in_tehnike }}</strong></p>
+{% endif %}
+
+{% if PraviPredmet.napisi_in_oznake %}
+<p><strong>Napisi in oznake</strong>: {{ PraviPredmet.napisi_in_oznake }}</strong></p>
+{% endif %}
+
+{% if PraviPredmet.stevilo_delov_ki_sestavlja_predmet %}
+<p><strong>Število delov, ki sestavlja predmet</strong>: {{ PraviPredmet.stevilo_delov_ki_sestavlja_predmet }}</strong></p>
+{% endif %}
+
+{% if PraviPredmet.ime_avtorja_ali_izdelovalca_predmeta %}
+<p><strong>Ime avtorja ali izdelovalca predmeta</strong>: {{ PraviPredmet.ime_avtorja_ali_izdelovalca_predmeta }}</strong></p>
+{% endif %}
+
+{% if PraviPredmet.motiv_naslov_dela_in_signalizacija %}
+<p><strong>Motiv, naslov dela in signalizacija</strong>: {{ PraviPredmet.motiv_naslov_dela_in_signalizacija }}</strong></p>
+{% endif %}
+
+{% if PraviPredmet.datacija %}
+<p><strong>Datacija</strong>: {{ PraviPredmet.datacija }}</strong></p>
+{% endif %}
+
+{% if PraviPredmet.ohranjenost_predmeta %}
+<p><strong>Ohranjenost predmeta</strong>: {{ PraviPredmet.ohranjenost_predmeta }}</strong></p>
+{% endif %}
+
+<!-- Naslov: Podatki O Izvoru Predmeta -->
+{% if NaslovZaPodatkeOIzvoruPredmeta %}
+<h3><strong>Podatki o izvoru predmeta:</strong></h3>
+{% endif %}
+
+{% if PraviPredmet.najdisce %}
+<p><strong>Najdišče</strong>: {{ PraviPredmet.najdisce }}</strong></p>
+{% endif %}
+
+{% if PraviPredmet.kraj_in_cas_izdelave_predmeta %}
+<p><strong>Kraj in čas izdelave predmeta</strong>: {{ PraviPredmet.kraj_in_cas_izdelave_predmeta }}</strong></p>
+{% endif %}
+
+{% if PraviPredmet.kraj_in_cas_uporabe_predmeta %}
+<p><strong>Kraj in čas uporabe predmeta</strong>: {{ PraviPredmet.kraj_in_cas_uporabe_predmeta }}</strong></p>
+{% endif %}
+
+{% if PraviPredmet.provenienca_zgodovina_predmeta_do_prihoda_v_muzej %}
+<p><strong>Provenienca (zgodovina predmeta do prihoda v muzej)</strong>: {{ PraviPredmet.provenienca_zgodovina_predmeta_do_prihoda_v_muzej }}</strong></p>
+{% endif %}
+
+<!-- Naslov: Podatki O Pridobitvi Predmeta -->
+{% if NaslovZaPodatkeOPridobitviPredmeta %}
+<h4><strong>Podatki o pridobitvi predmeta:</strong></h4>
+{% endif %}
+
+{% if PraviPredmet.nacin_pridobitve_predmeta %}
+<p><strong>Način pridobitve predmeta</strong>: {{ PraviPredmet.nacin_pridobitve_predmeta }}</strong></p>
+{% endif %}
+
+{% if PraviPredmet.ime_pridobitelja_predmeta %}
+<p><strong>Ime pridobitelja</strong>: {{ PraviPredmet.ime_pridobitelja_predmeta }}</strong></p>
+{% endif %}
+
+{% if PraviPredmet.cena_oziroma_ocenjena_vrednost_predmeta %}
+<p><strong>Cena oziroma ocenjena vrednost predmeta</strong>: {{ PraviPredmet.cena_oziroma_ocenjena_vrednost_predmeta }}</strong></p>
+{% endif %}
+
+{% if PraviPredmet.datum_pridobitve_predmeta %}
+<p><strong>Datum pridobitve predmeta</strong>: {{ PraviPredmet.datum_pridobitve_predmeta }}</strong></p>
+{% endif %}
+
+<!-- Naslov: Podatki O Inventarizaciji -->
+{% if NaslovZaPodatkeOInventarizaciji %}
+<h4><strong>Podatki o inventarizaciji predmeta:</strong></h4>
+{% endif %}
+
+{% if PraviPredmet.ime_odgovorne_osebe %}
+<p><strong>Ime odgovorne osebe</strong>: {{ PraviPredmet.ime_odgovorne_osebe }}</strong></p>
+{% endif %}
+
+{% if PraviPredmet.datum_inventarizacije_predmeta %}
+<p><strong>Datum inventarizacije predmeta</strong>: {{ PraviPredmet.datum_inventarizacije_predmeta }}</strong></p>
+{% endif %}
+
+{% if PraviPredmet.reference_in_povezave_s_predhodnimi_dokumentacijskimi_postopki %}
+<p><strong>Reference in povezave s predhodnimi dokumentacijskimi postopki</strong>: {{ PraviPredmet.reference_in_povezave_s_predhodnimi_dokumentacijskimi_postopki }}</strong></p>
+{% endif %}
+
+{% if PraviPredmet.nahajališče_predmeta_v_muzeju %}
+<p><strong>Nahajališče predmeta v muzeju</strong>: {{ PraviPredmet.nahajališče_predmeta_v_muzeju }}</strong></p>
+{% endif %}
+
+<!-- Naslov: Opombe -->
+{% if NaslovZaOpombe %}
+<h3><strong>Opombe:</strong></h3>
+{% endif %}
+
+{% if PraviPredmet.opombe %}
+<p><strong>Opombe</strong>: {{ PraviPredmet.opombe }}</strong></p>
+{% endif %}
 <nav>
-    <a href="/arhiv/">Začetek Arhiva</a>
+    <a href="/">Domov</a>
 </nav>
 </div>

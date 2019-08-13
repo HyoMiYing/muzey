@@ -1,16 +1,17 @@
+<title>Arhiv</title>
 {% load static %}
-<link rel="stylesheet" href="{% static 'archive.css' %}">
+<!-- <link rel="stylesheet" href="{% static 'archive.css' %}"> -->
 <div class="vsebina">
-{% if VseKategorije %}
+{% if VseZbirke %}
 <ul class="list">
-    {% for Kategorija in VseKategorije %}
-    <li><a href="/arhiv/{{ Kategorija.ImeKategorije }}">{{ Kategorija.ImeKategorije }}</a></li>
+    {% for Zbirka in VseZbirke %}
+    <li><a href="/arhiv/{{ Zbirka.ImeZbirke }}"><img src="{{ Zbirka.slika_ki_predstavlja_zbirko.url }}" alt=""></a></li>
     {% endfor %}
 </ul>
 {% else %}
-<p>Ni še kategorij</p>
+<p>Ni še zbirk</p>
 {% endif %}
 <br>
 <a class="home" href="/">Domov</a>
-<img src="{{ Stvar.SlikaStvari.url }}" alt="">
+<img src="{{ Predmet.NaslovnaSlikaPredmeta.url }}" alt="">
 </div>

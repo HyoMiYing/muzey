@@ -1,17 +1,48 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'itecat.css' %}">
-<div class="vsebina">
-{% if VseStvariVKategoriji %}
-<ul>
-    {% for Stvar in VseStvariVKategoriji %}
-        <li><a href="{{ Stvar.id }}">{{ Stvar.ImeStvari }}</a></li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>Ni stvari v tej kategoriji</p>
-{% endif %}
-<br>
-<nav>
-    <a href="/arhiv/">Začetek Arhiva</a>
-</nav>
-</div>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+        <style>
+                #img {
+                  position: relative;
+                  float: none;
+                  width:  100px;
+                  height: 100px;
+                  background-position: 50% 50%;
+                  background-repeat:   no-repeat;
+                  background-size:     cover;
+                      }
+        </style>
+<header>
+        <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <a class="navbar-brand" href="/">{{ variable.naslov }}</a>
+                  </div>
+                  <ul class="nav navbar-nav">
+                    <li><a href="/">Domov</a></li>
+                    <li><a href="/zgodba">Zgodba</a></li>
+                    <li><a href="/informacije">Informacije</a></li>
+                  </ul>
+                </div>
+              </nav>
+</header>
+    <div class="container">
+          {% if VsiPredmetiVZbirki %}
+            <div class="row">
+              {% for Predmet in VsiPredmetiVZbirki %}
+              <div class="col-sm">
+                <a href="{{ Predmet.id }}" id="img" class="img-responsive">
+                  <img src="{{ Predmet.NaslovnaSlikaPredmeta.url }}" id="img" class="img-responsive" alt="">
+                </a>
+              </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p>Ni še zbirk</p>
+          {% endif %}
+    </div>
